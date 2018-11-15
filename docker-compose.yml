@@ -1,0 +1,9 @@
+version: '2'
+services:
+    phpnginx:
+        image: eborges/phpnginx7.1
+        container_name: phpnginx7.1
+        volumes:
+            - .:/var/www/html
+        ports:
+            - "8090:80"

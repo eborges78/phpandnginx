@@ -5,7 +5,7 @@ LABEL maintainer="Emmanuel BORGES <contact@eborges.fr>"
 RUN apk update && apk upgrade
 RUN apk add nginx curl bash supervisor \
 php7 php7-fpm php7-cli php7-opcache php7-phar php7-memcached php7-apcu \
-php7-gd php7-mysqli php7-zlib php7-curl php7-pdo_mysql php7-ftp \
+php7-gd php7-mysqli php7-zlib php7-curl php7-pdo_mysql php7-ftp php7-ctype \
 php7-openssl php7-redis php7-mbstring php7-xml php7-dom php7-simplexml \
 php7-json php7-iconv php7-xdebug php7-zip php7-amqp php7-mcrypt php7-session
 

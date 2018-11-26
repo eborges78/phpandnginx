@@ -45,7 +45,6 @@ RUN chmod a+x /bin/composer
 
 # Expose ports
 EXPOSE 80
-EXPOSE 443
 
 # Run entrypoint
 WORKDIR /var/www/html

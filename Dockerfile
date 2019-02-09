@@ -7,7 +7,7 @@ RUN apk add nginx curl bash supervisor \
 php7 php7-fpm php7-cli php7-pear php7-opcache g++ make php7-dev php7-phar php7-memcached php7-apcu php7-ssh2 php7-xmlwriter  \
 php7-gd php7-mysqli php7-zlib php7-curl php7-pdo_mysql php7-ftp php7-ctype php7-xmlreader \
 php7-openssl php7-redis php7-mbstring php7-xml php7-dom php7-simplexml php7-sockets \
-php7-tokenizer php7-bcmath php7-gettext php7-intl php7-pdo_sqlite php7-soap \
+php7-tokenizer php7-bcmath php7-gettext php7-intl php7-pdo_sqlite php7-soap yarn \
 php7-json php7-iconv php7-xdebug php7-zip php7-amqp php7-mcrypt php7-session php7-simplexml
 
 RUN set -ex; \
@@ -38,16 +38,15 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY symfony.conf /etc/nginx/conf.d/default.conf
 COPY supervisord.conf /etc/supervisord.conf
 COPY date.ini /etc/php7/conf.d/date.ini
+COPY entrypoint.sh /usr/bin/
 
 # Permissions
 RUN chmod -Rf 0777 /var/log/
 RUN chmod a+x /bin/composer
+RUN chmod a+x /usr/bin/entrypoint.sh
 
-# Expose ports
 EXPOSE 80
 
-# Run entrypoint
 WORKDIR /var/www/html
 
-# start supervisord
-ENTRYPOINT ["supervisord", "--nodaemon", "--configuration", "/etc/supervisord.conf"]
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]
